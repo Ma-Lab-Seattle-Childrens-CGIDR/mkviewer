@@ -105,6 +105,19 @@ st.markdown(
     """
 )
 
+st.markdown(
+    """ 
+## Tools
+This website was created with [Streamlit](https://streamlit.io/), and is hosted on streamlit community cloud. [Motherduck](https://motherduck.com/) is used 
+to host the [DuckDB](https://duckdb.org/) database with all associated data. Additional libraries used include:  
+- [Ibis](https://ibis-project.org/) is used to interact with the DuckDB database
+- [Pandas](https://pandas.pydata.org/) is used to translate between the Ibis and Streamlit
+- [Pyvis](https://pyvis.readthedocs.io/en/latest/) is used for creating the interactive network visualizations
+- [Vega-Altair](https://altair-viz.github.io/) is used for visualizing the volcano plots
+- [Vega-Fusion](https://vegafusion.io/) is used to improve the performance of the vega-altair plotting
+    """
+)
+
 st.link_button(
     label="Github Repository",
     url="https://github.com/Ma-Lab-Seattle-Childrens-CGIDR/mkviewer_st",
