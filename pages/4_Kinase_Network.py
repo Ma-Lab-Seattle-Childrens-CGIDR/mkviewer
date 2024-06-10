@@ -79,7 +79,9 @@ target_type_selected = st.radio(
 
 
 # Select p-value cutoff
-pval_cutoff = st.number_input("Choose an upper p-value for significance", value=0.005, format="%f")
+pval_cutoff = st.number_input(
+    "Choose an upper p-value for significance", value=0.005, format="%f"
+)
 
 # Add physics?
 physics = st.checkbox("Add physics to graph?")
@@ -157,4 +159,9 @@ st.markdown(
     tuberculosis protein O-phosphorylation landscape. Nat Microbiol. 2023 Mar;8(3):548-561. doi: 10.1038/s41564-022-01313-7.   
     Epub 2023 Jan 23. PMID: 36690861.](https://doi.org/10.1038/s41564-022-01313-7)
     """
+)
+
+st.link_button(
+    label="Github Repository",
+    url="https://github.com/Ma-Lab-Seattle-Childrens-CGIDR/mkviewer_st",
 )

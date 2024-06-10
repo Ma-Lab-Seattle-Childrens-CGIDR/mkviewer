@@ -20,9 +20,17 @@ st.markdown(
     information about genes in various *Mycobacteria* species.  
 """
 )
-st.page_link("pages/1_Gene_Expression_Compendia.py", label="Gene Expression Compendia Viewer")
-st.page_link("pages/2_STPK_Differential_Phsohporylation.py", label="STPK Differential Phosphorylation Viewer")
-st.page_link("pages/2_STPK_Differential_Phsohporylation.py", label="STPK Differential Gene Expression Viewer")
+st.page_link(
+    "pages/1_Gene_Expression_Compendia.py", label="Gene Expression Compendia Viewer"
+)
+st.page_link(
+    "pages/2_STPK_Differential_Phsohporylation.py",
+    label="STPK Differential Phosphorylation Viewer",
+)
+st.page_link(
+    "pages/2_STPK_Differential_Phsohporylation.py",
+    label="STPK Differential Gene Expression Viewer",
+)
 st.page_link("pages/4_Kinase_Network.py", label="Kinase Network Viewer")
 st.page_link("pages/5_Mycobrowser.py", label="Mycobrowser Data Viewer")
 
@@ -97,4 +105,7 @@ st.markdown(
     """
 )
 
-st.link_button(label="Github Repository", url="https://github.com/Ma-Lab-Seattle-Childrens-CGIDR/mkviewer_st")
+st.link_button(
+    label="Github Repository",
+    url="https://github.com/Ma-Lab-Seattle-Childrens-CGIDR/mkviewer_st",
+)

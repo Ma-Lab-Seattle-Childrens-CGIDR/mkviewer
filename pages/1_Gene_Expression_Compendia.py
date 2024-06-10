@@ -70,7 +70,8 @@ selected_genes = st.multiselect("Select genes of interest:", GENE_LIST, default=
 
 pos_bound = st.number_input(
     "Choose a positive bound (selecting conditions of interest with log2(fold-change) above this bound)",
-    value=1.0, format="%f"
+    value=1.0,
+    format="%f",
 )
 
 neg_bound = st.number_input(
@@ -156,4 +157,9 @@ st.markdown(
     and Infection. mSphere. 2022 Apr 27;7(2)\:e0003322. doi: 10.1128/msphere.00033-22. Epub 2022 Mar 21. PMID: 35306876;   
     PMCID: PMC9044949.](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9044949/)
     """
+)
+
+st.link_button(
+    label="Github Repository",
+    url="https://github.com/Ma-Lab-Seattle-Childrens-CGIDR/mkviewer_st",
 )

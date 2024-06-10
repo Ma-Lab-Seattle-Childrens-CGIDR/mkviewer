@@ -73,6 +73,7 @@ species_selected = st.multiselect(
     default=None,
 )
 
+
 # Submit button
 def submit_button_clicked():
     st.session_state.form_submitted = True
@@ -81,7 +82,9 @@ def submit_button_clicked():
 st.button("Submit", on_click=submit_button_clicked)
 
 
-def display_mycobrowser_table(container, search_str, species_selected, columns_selected):
+def display_mycobrowser_table(
+    container, search_str, species_selected, columns_selected
+):
     if search_str == "":
         return None
     if not species_selected:
@@ -89,7 +92,7 @@ def display_mycobrowser_table(container, search_str, species_selected, columns_s
     if not columns_selected:
         columns_selected = possible_columns
     if case_insensitive:
-        search_str = "(?i)"+search_str
+        search_str = "(?i)" + search_str
     # Create a list of searchable columns (those that contain strings)
     search_columns = [
         col
@@ -123,7 +126,10 @@ c = st.empty()
 
 if st.session_state.form_submitted:
     display_mycobrowser_table(
-        c, search_str=search_str, species_selected=species_selected, columns_selected=columns_selected
+        c,
+        search_str=search_str,
+        species_selected=species_selected,
+        columns_selected=columns_selected,
     )
 
 st.markdown(
@@ -133,4 +139,9 @@ st.markdown(
     resource for mycobacterial genomes. Tuberculosis (Edinb). 2011 Jan;91(1):8-13. doi: 10.1016/j.tube.2010.09.006. 
     Epub 2010 Oct 25. PMID: 20980200.](https://www.sciencedirect.com/science/article/abs/pii/S1472979210001095?via%3Dihub)
     """
+)
+
+st.link_button(
+    label="Github Repository",
+    url="https://github.com/Ma-Lab-Seattle-Childrens-CGIDR/mkviewer_st",
 )

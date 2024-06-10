@@ -105,19 +105,20 @@ def display_volcano_chart(container):
     )
     container.altair_chart(
         mkview.volcano_plot(
-            data_table=filtered_table, 
+            data_table=filtered_table,
             foldchange_col="Fold-change (log2)",
-            pval_col="p-value", 
-            locus_col="Rv Number", 
+            pval_col="p-value",
+            locus_col="Rv Number",
             genename_col="Gene Name",
             volcano_width=600,
-            volcano_height=600
+            volcano_height=600,
         ),
         use_container_width=True,
     )
-    st.session_state.form_submitted=False
+    st.session_state.form_submitted = False
 
-c=st.empty()
+
+c = st.empty()
 
 if st.session_state.form_submitted:
     display_volcano_chart(c)
@@ -130,15 +131,14 @@ if "table_submitted" not in st.session_state:
     st.session_state.table_submitted = False
 
 stpk_table_select = st.multiselect(
-    "Choose STPKs to display data for:", 
-    STPK_LIST,
-    default = None)
+    "Choose STPKs to display data for:", STPK_LIST, default=None
+)
 
 # Select Mutant
 mutant_table_selected = st.radio(
     "Select which mutant of the STPK you want to view differential phosphorylation for:",
     ["OE", "LOF", "Both"],
-    key="mutant_table_selector"
+    key="mutant_table_selector",
 )
 
 mutant_table_selected_list = []
@@ -151,39 +151,44 @@ elif mutant_table_selected == "Both":
 else:
     raise ValueError("Invalid Mutant Value Selected")
 
-pval_cutoff = st.number_input(
-    "Choose a p-value cutoff",
-    value=0.005,
-    format="%f")
+pval_cutoff = st.number_input("Choose a p-value cutoff", value=0.005, format="%f")
 
 pos_fold_change_bound = st.number_input(
     "Choose a positive bound (selecting proteins with differential phosphorylation (log2(fold-change) above this bound))",
     value=1.0,
-    format="%f"
+    format="%f",
 )
 
 neg_fold_change_bound = st.number_input(
     "Choose a negative bound (selecting proteins with differential phosphorylation (log2(fold-change) below this bound))",
     value=-1.0,
-    format="%f"
+    format="%f",
 )
+
 
 # Submit button
 def table_submit_clicked():
     st.session_state.table_submitted = True
+
+
 st.button("Submit", on_click=table_submit_clicked, key="table_submit")
+
 
 def display_phos_table(container):
     if not stpk_table_select:
         return None
-    filtered_table = phospho_table.filter(phospho_table["STPK"].isin(stpk_table_select)
-    ).filter(phospho_table["p-value"]<=pval_cutoff).filter(
-        (phospho_table["Fold-change (log2)"] <= neg_fold_change_bound ) | (phospho_table["Fold-change (log2)"] >= pos_fold_change_bound)
-    ).filter(phospho_table["Mutant"].isin(mutant_table_selected_list))
-    st.dataframe(
-        filtered_table.to_pandas()
+    filtered_table = (
+        phospho_table.filter(phospho_table["STPK"].isin(stpk_table_select))
+        .filter(phospho_table["p-value"] <= pval_cutoff)
+        .filter(
+            (phospho_table["Fold-change (log2)"] <= neg_fold_change_bound)
+            | (phospho_table["Fold-change (log2)"] >= pos_fold_change_bound)
+        )
+        .filter(phospho_table["Mutant"].isin(mutant_table_selected_list))
     )
+    st.dataframe(filtered_table.to_pandas())
     st.session_state.table_submitted = False
+
 
 table_container = st.empty()
 
@@ -197,4 +202,9 @@ st.markdown(
     tuberculosis protein O-phosphorylation landscape. Nat Microbiol. 2023 Mar;8(3):548-561. doi: 10.1038/s41564-022-01313-7.   
     Epub 2023 Jan 23. PMID: 36690861.](https://doi.org/10.1038/s41564-022-01313-7)
     """
+)
+
+st.link_button(
+    label="Github Repository",
+    url="https://github.com/Ma-Lab-Seattle-Childrens-CGIDR/mkviewer_st",
 )
