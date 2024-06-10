@@ -96,3 +96,5 @@ st.markdown(
     PMCID: PMC9044949.](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9044949/)
     """
 )
+
+st.link_button(label="Github Repository", url="https://github.com/Ma-Lab-Seattle-Childrens-CGIDR/mkviewer_st")
