@@ -41,6 +41,17 @@ GENE_LIST = get_gene_list()
 # Start of Page
 st.title("Kinase Network Viewer")
 
+st.markdown(
+    """
+    Welcome to the Kinase Network Viewer! This tool allows the visualization of the kinase phosphoryaltion or 
+    gene expression change network in *Mycobacterium tuberculosis*. First select a list of genes of interest, 
+    as well as whether you want the network to be from the OE (overexpression) mutant, the LOF (loss of function)
+    mutant, or both. Then choose whether you want to visualize the phosphorylation, or differential gene expression (DEG
+    network, and what level of significance you want to filter for. The remaining options customize the appearence of the network, 
+    and whether to include physics in the graph (which will generate a force directed layout for the network). 
+    """
+)
+
 # Select genes of interest
 selected_genes = st.multiselect("Select genes of interest:", GENE_LIST, default=None)
 
@@ -68,7 +79,7 @@ target_type_selected = st.radio(
 
 
 # Select p-value cutoff
-pval_cutoff = st.number_input("Choose an upper p-value for significance", value=0.005)
+pval_cutoff = st.number_input("Choose an upper p-value for significance", value=0.005, format="%f")
 
 # Add physics?
 physics = st.checkbox("Add physics to graph?")
@@ -138,3 +149,12 @@ c = st.empty()
 
 if st.session_state.form_submitted:
     display_network(c)
+
+st.markdown(
+    """
+    ## Sources:
+    -  [Frando A, Boradia V, Gritsenko M, Beltejar C, Day L, Sherman DR, Ma S, Jacobs JM, Grundner C. The Mycobacterium   
+    tuberculosis protein O-phosphorylation landscape. Nat Microbiol. 2023 Mar;8(3):548-561. doi: 10.1038/s41564-022-01313-7.   
+    Epub 2023 Jan 23. PMID: 36690861.](https://doi.org/10.1038/s41564-022-01313-7)
+    """
+)
