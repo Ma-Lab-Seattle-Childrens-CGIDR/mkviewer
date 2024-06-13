@@ -90,7 +90,7 @@ physics = st.checkbox("Add physics to graph?")
 kinase_size = st.number_input("Choose size for kinase nodes", value=20)
 
 # Gene Size
-gene_size = st.number_input("Choose size for kinase nodes", value=10)
+gene_size = st.number_input("Choose size for gene nodes", value=10)
 
 # Kinase Color
 kinase_color = st.text_input(
@@ -139,7 +139,6 @@ def display_network(container):
         pval_col="p-value",
     )
     kinase_network.toggle_physics(physics)
-    # There has to be a way to do this directly, TODO: Fix this!
     with container:
         components.html(kinase_network.generate_html(), height=800, width=800)
 

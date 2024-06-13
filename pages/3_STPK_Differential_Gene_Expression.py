@@ -49,17 +49,21 @@ st.title("Serine Threonine Protein Kinase Differential Gene Expression")
 st.markdown(
     """ 
     Welcome to the STPK Differential Gene Expression Viewer! This tool uses data from Frando et al., 2023 to explore 
-    the impact that perturbing the Serine Threonine Protein Kinases (STPKs) has on the gene expression of *Myobacterium tuberulosis*. 
+    the impact that perturbing the Serine Threonine Protein Kinases (STPKs) has on the gene expression of 
+    *Myobacterium tuberulosis*. 
 
-    The first section allows for visualizing differential gene expression as a volcano plot, where the fold-change (log2) of 
+    The first section allows for visualizing differential gene expression as a volcano plot, where the fold-change 
+    (log2) of 
     gene expression is plotted along the x-axis, and the significance is plotted along the y-axis (in the form of 
-    -log10(p-value)). The visualization includes tooltips if you hover over the points including information on the gene, the
-    p-value, and the fold change. A region can be selected by clicking and dragging on the plot, and the table to the right
+    -log10(p-value), so higher is more significant). The visualization includes tooltips if you hover over the points 
+    including information on the gene, the
+    p-value, and the fold change. A region can be selected by clicking and dragging on the plot, and the table to the 
+    right
     will update to show 30 of the genes in that region (not sorted).   
 
     In the second section, you can filter the differential gene expression data by significance (p-value), 
     and fold-change (log2), and a table will be displayed showing information about the gene expression changes meeting
-    your criteria. Multiple STPKs can be selcted simultaneously, and will all be included in the table. The 
+    your criteria. Multiple STPKs can be selected simultaneously, and will all be included in the table. The 
     table can be downloaded as a csv by clicking the download button near the top right of the table (which shows up
     when your mouse is hovering over the table). 
     """
@@ -101,14 +105,14 @@ st.button("Submit", on_click=submit_button_clicked)
 
 
 def display_volcano_chart(container):
-    if stpk_selected is None:
+    if not stpk_selected:
         return None
     filtered_table = deg_table.filter(
         (deg_table["STPK"] == stpk_selected)
         & (deg_table["Mutant"].isin(mutant_selected_list))
     )
     container.altair_chart(
-        mkview.volcano_plot(
+        mkview.kinase_volcano_plot(
             data_table=filtered_table,
             foldchange_col="Fold-change (log2)",
             pval_col="p-value",

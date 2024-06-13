@@ -46,12 +46,16 @@ st.title("Serine Threonine Protein Kinase Differential Phosphorylation")
 st.markdown(
     """ 
     Welcome to the STPK Differential Phosphorylation Viewer! This tool uses data from Frando et al., 2023 to explore 
-    the impact that perturbing the Serine Threonine Protein Kinases (STPKs) has on the phosphoproteome of *Myobacterium tuberulosis*. 
+    the impact that perturbing the Serine Threonine Protein Kinases (STPKs) has on the phosphoproteome of 
+    *Myobacterium tuberulosis*. 
 
-    The first section allows for visualizing differential phosphoryaltion as a volcano plot, where the fold-change (log2) of 
+    The first section allows for visualizing differential phosphoryaltion as a volcano plot, where the fold-change 
+    (log2) of 
     phosphorylation level is plotted along the x-axis, and the significance is plotted along the y-axis (in the form of 
-    -log10(p-value)). The visualization includes tooltips if you hover over the points including information on the gene, the
-    p-value, and the fold change. A region can be selected by clicking and dragging on the plot, and the table to the right
+    -log10(p-value), so higher is more significant). The visualization includes tooltips if you hover over the points 
+    including information on the gene, the
+    p-value, and the fold change. A region can be selected by clicking and dragging on the plot, and the table to the 
+    right
     will update to show 30 of the genes in that region (not sorted).   
 
     In the second section, you can filter the differential phosphorylation data by significance (p-value), 
@@ -104,7 +108,7 @@ def display_volcano_chart(container):
         & (phospho_table["Mutant"].isin(mutant_selected_list))
     )
     container.altair_chart(
-        mkview.volcano_plot(
+        mkview.kinase_volcano_plot(
             data_table=filtered_table,
             foldchange_col="Fold-change (log2)",
             pval_col="p-value",

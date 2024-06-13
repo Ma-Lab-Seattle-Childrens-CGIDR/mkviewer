@@ -15,9 +15,10 @@ st.title("Home")
 
 st.markdown(
     """
-    Welcome to MKViewer! This website is designed to help explore data associated with *Mycobacterium tuberculosis*, and other *Mycobacteria*.  
-    It includes data and visualizations about changes in gene expression, phsohprylation by the Serine threonine protein kinases, and   
-    information about genes in various *Mycobacteria* species.  
+    Welcome to MKViewer! This website is designed to help explore data associated with *Mycobacterium tuberculosis*,   
+    and other *Mycobacteria*. It includes data and visualizations about changes in gene expression, phsohprylation   
+    by the Serine threonine protein kinases, gene expression impacts of the transcription factors, and  information  
+    about genes in various *Mycobacteria* species.  
 """
 )
 st.page_link(
@@ -28,11 +29,13 @@ st.page_link(
     label="STPK Differential Phosphorylation Viewer",
 )
 st.page_link(
-    "pages/2_STPK_Differential_Phsohporylation.py",
+    "pages/3_STPK_Differential_Gene_Expression.py",
     label="STPK Differential Gene Expression Viewer",
 )
-st.page_link("pages/4_Kinase_Network.py", label="Kinase Network Viewer")
-st.page_link("pages/5_Mycobrowser.py", label="Mycobrowser Data Viewer")
+st.page_link("pages/4_Transcription_Factor_Overexpression.py", label="Transcription Factor Overexpression")
+st.page_link("pages/5_Kinase_Network.py", label="Kinase Network Viewer")
+st.page_link("pages/6_Transcription_Factor_Network.py", label="Transcription Factor Network")
+st.page_link("pages/7_Mycobrowser.py", label="Mycobrowser Data Viewer")
 
 st.markdown(
     """
@@ -69,11 +72,32 @@ st.markdown(
 
 st.markdown(
     """
+    # Transcription Factor Overexpression
+    
+    Investigate the changes in gene expression caused by overexpression of the transcription factors (TFs). Using data 
+    from Rustad et al., 2014, allows visualization of the changes in gene expression caused by TF overexpression.   
+    Also includes table showing the differential gene expression which can be filtered by significance (p-value)   
+    and fold-change (log2).  
+    """
+)
+
+st.markdown(
+    """
     ## STPK Kinase Network
 
     Investigate which genes are targeted by the STPKs. Using data from Frando et al., 2023, visualizes the   
     network of genes which are phosphorylated by different kinases, or have their gene expression significantly   
     altered by STPK perturbations.  
+    """
+)
+
+st.markdown(
+    """
+    ## Transcription Factor Network
+    
+    Investigate which genes are regulated by which transcription factor (TF). Using data from Rustad et al., 2014, 
+    visualizes the network of genes whose expression is altered by different TFs.
+    
     """
 )
 
@@ -98,6 +122,10 @@ st.markdown(
     -  [Kapopoulou A, Lew JM, Cole ST. The MycoBrowser portal: a comprehensive and manually annotated 
     resource for mycobacterial genomes. Tuberculosis (Edinb). 2011 Jan;91(1):8-13. doi: 10.1016/j.tube.2010.09.006. 
     Epub 2010 Oct 25. PMID: 20980200.](https://www.sciencedirect.com/science/article/abs/pii/S1472979210001095?via%3Dihub)
+    - [Rustad TR, Minch KJ, Ma S, Winkler JK, Hobbs S, Hickey M, Brabant W, Turkarslan S, Price ND, Baliga NS, 
+    Sherman DR. Mapping and manipulating the Mycobacterium tuberculosis transcriptome using a transcription factor 
+    overexpression-derived regulatory network. Genome Biol. 2014;15(11):502. doi: 10.1186/PREACCEPT-1701638048134699. 
+    PMID: 25380655; PMCID: PMC4249609.](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4249609/)
      - [Yoo R, Rychel K, Poudel S, Al-Bulushi T, Yuan Y, Chauhan S, Lamoureux C, Palsson BO, Sastry A. Machine Learning of   
     All Mycobacterium tuberculosis H37Rv RNA-seq Data Reveals a Structured Interplay between Metabolism, Stress Response,   
     and Infection. mSphere. 2022 Apr 27;7(2)\:e0003322. doi: 10.1128/msphere.00033-22. Epub 2022 Mar 21. PMID: 35306876;   
