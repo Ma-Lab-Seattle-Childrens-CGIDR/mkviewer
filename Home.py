@@ -25,7 +25,7 @@ st.page_link(
     "pages/1_Gene_Expression_Compendia.py", label="Gene Expression Compendia Viewer"
 )
 st.page_link(
-    "pages/2_STPK_Differential_Phsohporylation.py",
+    "pages/2_STPK_Differential_Phosphorylation.py",
     label="STPK Differential Phosphorylation Viewer",
 )
 st.page_link(
