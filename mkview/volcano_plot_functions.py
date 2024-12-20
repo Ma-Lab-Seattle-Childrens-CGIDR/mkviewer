@@ -14,7 +14,7 @@ import vegafusion as vf
 # Local Imports
 
 # Setup vegafusion
-vf.enable()
+alt.data_transformers.enable("vegafusion")
 
 
 # Main Function
